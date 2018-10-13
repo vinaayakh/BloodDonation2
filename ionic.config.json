@@ -1,0 +1,7 @@
+{
+  "name": "bloodDonation",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
