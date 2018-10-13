@@ -1,0 +1,53 @@
+<div class="card" (click)="openCard()" [ngClass]="{'popOpen':person.openCard}">
+    <div class="card-image" [style.background]="'url('+person.profilePicture+')'">
+        <!-- <img src="../../assets/imgs/steve.jpg" alt=""> -->
+    </div>
+    <div class="card-data">
+        <div class="data-left">
+            <div class="card-name">
+                <div class="icon-block">
+                    <ion-icon name="contact"></ion-icon>
+                </div>
+                <div class="name-block">
+                    <span>{{person.name}}</span>
+                </div>
+            </div>
+            <div class="card-phone">
+                <div class="icon-block">
+                    <ion-icon name="call"></ion-icon>
+                </div>
+                <div class="name-block">
+                    <span>{{person.contactNumber}}</span>
+                </div>
+            </div>
+            <div class="card-last-donated">
+                <!-- <ion-icon name="time"></ion-icon><span>{{person.openCard}}</span> -->
+                <ion-icon name="time"></ion-icon><span>2 days ago</span>
+            </div>
+        </div>
+        <div class="data-right">
+            <div class="card-blood-group">
+                <div class="block">
+                    <ion-icon name="water"></ion-icon>
+                </div>
+                <div class="block">
+                    <span>{{person.bloodType}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hidden-block" *ngIf="person.openCard">
+        <div class="address-block">
+            <p>
+                <ng-container *ngIf="person?.address?.line1">{{person.address.line1}}</ng-container>
+                <ng-container *ngIf="person?.address?.line2">, {{person.address.line2}}</ng-container>
+                <ng-container *ngIf="person?.address?.city">, {{person.address.city}}</ng-container>
+                <ng-container *ngIf="person?.address?.state">, {{person.address.state}}</ng-container>
+                <ng-container *ngIf="person?.address?.pincode">, {{person.address.pincode}}.</ng-container>
+            </p>
+        </div>
+        <div class="call-block">
+            <div class="call-button" (click)="callPerson();$event.stopPropagation()">Call</div>
+        </div>
+    </div>
+</div>
