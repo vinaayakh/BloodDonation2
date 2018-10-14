@@ -21,14 +21,15 @@
         background-size: cover!important;
     }
     .card-data{
-        padding: 12px 6px;
+        padding: 12px 3px;
         padding-right: 0;
         vertical-align: middle;
         display: inline-block;
-        width: 71%;
+        width: 70%;
         height: 110px;
         .data-left{
-            width: 67%;
+            // width: 68%;
+            width: calc(100% - 77px);
             display: inline-table;
             border-right: 2px solid #e2e2e2;
             .card-name{
@@ -36,7 +37,7 @@
                 font-weight: bold;
                 text-transform: capitalize;
                 display: inline-table;
-                margin-bottom: 2px;
+                margin-bottom: 7px;
                 width: 100%;
             }
             .card-phone{
@@ -55,11 +56,14 @@
                 }
             }                
             .card-last-donated{
-                margin-top: 8%;
+                // margin-top: 8%;
+                // display: table-footer-group;
                 text-align: center;
                 color: #a2a2a2;
-                display: table-footer-group;
                 width: 100%;
+                position: relative;
+                top: 25px;
+                left: 22px;
                 .icon{
                     display: inline-block;
                     vertical-align: middle;
@@ -72,11 +76,11 @@
         }
         .data-right{
             height: 100%;
-            width: 29%;
             display: inline-table;
             font-size: 32px;
             font-weight: bold;
             vertical-align: top;
+            width: 70px;
             .card-blood-group{
                 vertical-align: middle;
                 display: table-cell;

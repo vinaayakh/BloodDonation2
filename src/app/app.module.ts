@@ -9,13 +9,17 @@ import { CardComponent } from '../components/card/card.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ProfilePage } from '../pages/profile/profile.component';
+import { SignUpFormComponent } from '../components/sign-up-form/sign-up-form.component';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    CardComponent
+    CardComponent,
+    ProfilePage,
+    SignUpFormComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +29,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,

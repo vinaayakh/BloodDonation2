@@ -1,0 +1,107 @@
+.common-card{
+    display: block;
+    width: 100%;
+    padding: 20px 10px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    // box-shadow: 1px 4px 18px 0px #636363;
+    box-shadow: 1px 4px 18px 0px #272727;
+    transition: height 300ms ease-in-out, opacity 300ms  ease-in-out;
+    overflow: hidden;
+    text-align: center;
+    &.sign-up-card{
+        height: 475px;
+        margin-bottom: 12px;
+        margin-top: 7%;
+        .signed-in-header{
+            color: #585858;
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 55px;
+        }
+        .text-content{
+            font-size: 18px;
+            margin: 28px auto;
+            line-height: 36px;
+            background: #d6d6d6;
+            color: #585858;
+            width: 88%;
+            padding: 12px;
+            border-radius: 5px;
+            -webkit-box-shadow: 0px 2px 9px 0px #656565;
+            box-shadow: 0px 2px 9px 0px #656565;
+            button{
+                margin: 0 8px;
+            }
+        }
+        hr{
+            &:after{
+                content: 'or';
+                display: block;
+                color: black;
+                width: 34px;
+                position: absolute;
+                height: 25px;
+                font-size: 18px;
+                margin-top: -13px;
+                text-align: center;
+                left: 46%;
+                z-index: 17;
+                background: white;
+            }
+        }
+    }
+    &.profile-card{
+        button{
+            margin: 0 10px;
+        }
+        .profile-img{
+            box-shadow: 0px 2px 9px 0px #656565;
+            border-radius: 5px;
+            vertical-align: middle;
+            display: inline-block;
+            width: 28%;
+            height: 116px;
+            background-position: center!important;
+            background-size: cover!important;
+        }
+        .card-section{
+            background-color: #656565;
+            color:white;
+            margin: 16px 0;
+            padding: 22px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 9px 0px #656565;
+            .input-fields{
+                text-align: right;
+                margin: 14px 0;
+                label{
+                    width: 30%;
+                    text-align: left;
+                    padding-right: 10px;
+                }
+                input, .select-section{
+                    width: 65%;
+                    color:black;
+                    border-radius: 5px;
+                    border: none;
+                    height: 26px;
+                }
+                input{
+                    box-shadow: 0px 2px 9px 0px #353535;
+                    padding: 0 8px;
+                }
+                .select-section{
+                    display: inline-block;
+                    text-align: center;
+                    select{
+                        padding: 2px;
+                        border-radius: 5px;
+                        border: none;
+                        box-shadow: 0px 2px 9px 0px #353535;
+                    }
+                }
+            }
+        }
+    }
+}

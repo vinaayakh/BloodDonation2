@@ -19,7 +19,7 @@ export class HomePage {
         lastDonated: new Date(),
         address: {
           line1: "201 Amethyst Drive",
-          line2: "",
+          // line2: "",
           city: "Coldwater",
           state: "Michigan",
           pincode: "49036",
@@ -34,7 +34,7 @@ export class HomePage {
         lastDonated: new Date(),
         address: {
           line1: "1658 Biddie Lane",
-          line2: "",
+          // line2: "",
           city: "Richmond",
           state: "Virginia",
           pincode: "23219",
@@ -49,7 +49,7 @@ export class HomePage {
         lastDonated: new Date(),
         address: {
           line1: "607 Skinner Hollow Road",
-          line2: "",
+          // line2: "",
           city: "Eugene",
           state: "Oregon",
           pincode: "97405",
@@ -64,7 +64,7 @@ export class HomePage {
         lastDonated: new Date(),
         address: {
           line1: "2048 Lady Bug Drive",
-          line2: "",
+          // line2: "",
           city: "Queens",
           state: "New York",
           pincode: "11101",
@@ -79,7 +79,7 @@ export class HomePage {
         lastDonated: new Date(),
         address: {
           line1: "4402 Adams Drive",
-          line2: "",
+          // line2: "",
           city: "Houston",
           state: "Texas",
           pincode: "77002",
@@ -94,7 +94,7 @@ export class HomePage {
         lastDonated: new Date(),
         address: {
           line1: "4449 Powder",
-          line2: "House Road",
+          // line2: "House Road",
           city: "West Palm Beach",
           state: "Florida",
           pincode: "33411",
