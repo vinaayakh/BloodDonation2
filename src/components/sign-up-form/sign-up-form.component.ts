@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Person } from '../../models/person';
+
 @Component({
     selector: 'sign-up-form-component',
     templateUrl: 'sign-up-form.component.html'

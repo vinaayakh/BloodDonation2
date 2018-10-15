@@ -11,6 +11,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ProfilePage } from '../pages/profile/profile.component';
 import { SignUpFormComponent } from '../components/sign-up-form/sign-up-form.component';
+import { DatabaseService } from '../services/database.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { SignUpFormComponent } from '../components/sign-up-form/sign-up-form.com
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DatabaseService
   ]
 })
 export class AppModule {}
