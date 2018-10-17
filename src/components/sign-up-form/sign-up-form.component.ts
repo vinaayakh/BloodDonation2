@@ -11,7 +11,7 @@ import { ToastService } from '../../services/toast.service';
     templateUrl: 'sign-up-form.component.html'
 })
 export class SignUpFormComponent {
-    showSignUp: boolean = true; // default false to show the sign up buttons first.
+    showSignUp: boolean = false; // default true to show the sign up buttons first.
     personDetails: Person = new Person();
     bloodTypeList: Array<String> = ['O+ve', 'O-ve', 'A+ve', 'A-ve', 'B+ve', 'B-ve', 'AB+ve', 'AB-ve']
 

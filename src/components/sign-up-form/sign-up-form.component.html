@@ -12,64 +12,63 @@
 </ng-template>
 
 <ng-template #profileCard>
-    <div class="common-card profile-card">
-        <ng-container *ngIf="personDetails.profilePicture then showPicture else showCamera"></ng-container>
-        <ng-template #showCamera>
-            <div class="profile-icon" (click)="openCamera()">
-                <ion-icon name="camera"></ion-icon>
-            </div>
-        </ng-template>
-        <ng-template #showPicture>
-            <div class="profile-img" [style.background]="makeTrustedImage()">
-            </div>
-        </ng-template>
+    <div class="form-card profile-card">
+        <div class="section-header card-section">Personal Details</div>
         <form #profileForm="ngForm" (submit)="registerDonor(profileForm)">
             <div class="card-section">
-                <div class="input-fields">
-                    <label>Name </label>
-                    <input type="text" [(ngModel)]="personDetails.name" #name="ngModel" name="name" placeholder="Enter your Full Name">
+                <div class="left-section" #leftSection>
+                    <ng-container *ngIf="personDetails.profilePicture then showPicture else showCamera"></ng-container>
+                    <ng-template #showCamera>
+                        <div class="profile-icon" (click)="openCamera()">
+                            <ion-icon name="camera"></ion-icon>
+                            <strong class="upload-text"> Upload Image</strong>
+                        </div>
+                    </ng-template>
+                    <ng-template #showPicture>
+                        <div class="profile-img" [style.background]="makeTrustedImage()">
+                        </div>
+                    </ng-template>
                 </div>
-                <div class="input-fields">
-                    <label>Blood Type </label>
-                    <div class="select-section">
-                        <select type="text" [(ngModel)]="personDetails.bloodType" #bloodType="ngModel" name="bloodType">
-                            <option *ngFor="let bloodType of bloodTypeList" [value]="bloodType">{{bloodType}}</option>
-                        </select>
-                    </div>
+                <div class="right-section" [style.height.px]="leftSection.clientHeight">
+                    <ion-item>
+                        <ion-label color="primary" stacked>Contact Number</ion-label>
+                        <ion-input type="number" [(ngModel)]="personDetails.contactNumber" #contactNumber="ngModel"
+                            name="contactNumber" placeholder="+91XXXXXXXXXX"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Blood Type</ion-label>
+                        <ion-select [(ngModel)]="personDetails.bloodType" #bloodType="ngModel" name="bloodType">
+                            <ion-option *ngFor="let bloodType of bloodTypeList" [value]="bloodType">{{bloodType}}</ion-option>
+                        </ion-select>
+                    </ion-item>
                 </div>
-                <div class="input-fields">
-                    <label>Phone (+91) </label>
-                    <input type="number" [(ngModel)]="personDetails.contactNumber" #contactNumber="ngModel" name="contactNumber"
-                        placeholder="Enter your Mobile number">
-                </div>
+                <ion-item>
+                    <ion-label color="primary" stacked>Full Name</ion-label>
+                    <ion-input type="text" [(ngModel)]="personDetails.name" #name="ngModel" name="name" placeholder="Enter your Full name"></ion-input>
+                </ion-item>
             </div>
             <div class="card-section" ngModelGroup="address">
-                <div class="input-fields">
-                    <label>Address </label>
-                    <input type="text" [(ngModel)]="personDetails.address.line1" #line1="ngModel" name="line1"
-                        placeholder="Enter your Address">
-                </div>
-                <!-- <div class="input-fields">
-                        <label>Address line2 </label>
-                        <input type="text" [(ngModel)]="personDetails.address.line2" #name="ngModel" name="name">
-                     </div> -->
-                <div class="input-fields">
-                    <label>City </label>
-                    <input type="text" [(ngModel)]="personDetails.address.city" #city="ngModel" name="city" placeholder="Enter your City">
-                </div>
-                <div class="input-fields">
-                    <label>State </label>
-                    <input type="text" [(ngModel)]="personDetails.address.state" #state="ngModel" name="state"
-                        placeholder="Enter your State">
-                </div>
-                <div class="input-fields">
-                    <label>Pincode </label>
-                    <input type="text" [(ngModel)]="personDetails.address.pincode" #pincode="ngModel" name="pincode"
-                        placeholder="Enter your Pincode">
-                </div>
+                <ion-item>
+                    <ion-label color="primary" stacked>Address</ion-label>
+                    <ion-input type="text" [(ngModel)]="personDetails.address.line1" #line1="ngModel" name="line1" placeholder="Enter your Address"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label color="primary" stacked>City</ion-label>
+                    <ion-input type="text" [(ngModel)]="personDetails.address.city" #city="ngModel" name="city" placeholder="Enter the City"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label color="primary" stacked>State</ion-label>
+                    <ion-input type="text" [(ngModel)]="personDetails.address.state" #state="ngModel" name="state" placeholder="Enter the State"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label color="primary" stacked>Pincode</ion-label>
+                    <ion-input type="text" [(ngModel)]="personDetails.address.pincode" #pincode="ngModel" name="pincode" placeholder="Enter the Pincode"></ion-input>
+                </ion-item>
             </div>
-            <button class="primary" type="submit"> Register </button>
-            <button class="secondary" type="button" (click)="cancelRegister()"> Cancel </button>
+            <div class="card-section button-bar">
+                <button class="primary" type="submit"> Register </button>
+                <button class="secondary" type="button" (click)="cancelRegister()"> Cancel </button>
+            </div>
         </form>
     </div>
 </ng-template>

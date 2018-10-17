@@ -1,4 +1,4 @@
-.common-card{
+.common-card, .form-card{
     display: block;
     width: 100%;
     padding: 20px 10px;
@@ -8,7 +8,7 @@
     box-shadow: 1px 4px 18px 0px #272727;
     transition: height 300ms ease-in-out, opacity 300ms  ease-in-out;
     overflow: hidden;
-    text-align: center;
+    // text-align: center;
     &.sign-up-card{
         height: 475px;
         margin-bottom: 12px;
@@ -52,6 +52,16 @@
         }
     }
     &.profile-card{
+        .left-section{
+            display: inline-block;
+            width: 33%;
+            vertical-align: middle;
+        }
+        .right-section{
+            display: inline-block;
+            width: 65%;
+            vertical-align: top;
+        }
         button{
             margin: 0 10px;
         }
@@ -60,16 +70,24 @@
             vertical-align: middle;
             display: inline-block;
             width: 30%;
-            height: 116px;
+            height: 104px;
             background-position: center!important;
             background-size: cover!important;
             box-shadow: 0px 2px 9px 0px #656565;
         }
         .profile-icon{
-            font-size: 7.2em;
-            width: 1.4em;
+            font-size: 5.6em;
+            width: 1.2em;
             background: #dadada;
             color: #e60000;
+            text-align: center;
+            .upload-text{
+                font-size: 12px;
+                position: relative;
+                top: -79px;
+                color: black;
+            }
+            // margin: 30% 0;
         }
         .card-section{
             background-color: #656565;
@@ -87,7 +105,7 @@
                     padding-right: 10px;
                 }
                 input, .select-section{
-                    width: 65%;
+                    width: 50%;
                     color:black;
                     border-radius: 5px;
                     border: none;
@@ -108,6 +126,26 @@
                     }
                 }
             }
+        }
+    }
+}
+.form-card{
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+    &.profile-card{
+        .card-section{
+            &.button-bar{
+                text-align: center;
+            }
+            &.section-header, .section-header{
+                padding: 10px;
+                font-size: 19px;
+                font-weight: 500;   
+            }
+            background-color: #ffffff!important;
+            color: black!important;
+            padding: 18px 22px 22px 22px;
         }
     }
 }
