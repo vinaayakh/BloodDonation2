@@ -1,19 +1,24 @@
 import { Injectable } from "@angular/core";
 import PouchDB from 'pouchdb';
 import { Person } from "../models/person";
+import { ToastService } from "./toast.service";
 
 @Injectable()
 export class DatabaseService {
     db;
     remote: any;
-    constructor() {
+    constructor(private toast: ToastService) {
         this.initDatabase();
     }
 
     initDatabase() {
         this.db = new PouchDB('Donors');
         this.remote = new PouchDB("https://couchdb-9f925b.smileupps.com/donors");
-        this.db.replicate.from(this.remote);
+        this.db.sync(this.remote, { "continuous": true, "live": true }).on('change', function (change) {
+            // yo, something changed!
+            console.log(change);
+            //get new docs here and change the service to emit an observable for the docs list
+        });
     }
 
     async getMany() {
@@ -31,36 +36,21 @@ export class DatabaseService {
     }
 
     saveData(donor: Person) {
-        this.remote.post(donor);
+        this.remote.post(donor).then((success) => {
+        }).catch((err) => {
+            console.log(err);
+        });;
     }
 
-    updateTodo(donor: Person) {
+    updateData(donor: Person) {
         this.remote.put(donor).catch((err) => {
             console.log(err);
         });
     }
 
-    deleteTodo(donor: Person) {
+    deleteData(donor: Person) {
         this.remote.remove(donor).catch((err) => {
             console.log(err);
         });
     }
-
-    // initializeData(){
-    //     this.saveData({
-    //         name: "Wanda Maximoff",
-    //         bloodType: "B-ve",
-    //         contactNumber: "561-605-8032",
-    //         lastDonated: new Date(),
-    //         address: {
-    //           line1: "4449 Powder",
-    //           // line2: "House Road",
-    //           city: "West Palm Beach",
-    //           state: "Florida",
-    //           pincode: "33411",
-    //         },
-    //         profilePicture: "../../assets/imgs/scarlet_witch.jpg",
-    //         openCard: false
-    //       })
-    // }
 }

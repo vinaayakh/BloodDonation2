@@ -7,11 +7,16 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { CardComponent } from '../components/card/card.component';
 
+import { Toast } from '@ionic-native/toast';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Camera } from '@ionic-native/camera';
 import { ProfilePage } from '../pages/profile/profile.component';
 import { SignUpFormComponent } from '../components/sign-up-form/sign-up-form.component';
 import { DatabaseService } from '../services/database.service';
+import { SafePipe } from '../pipes/safe-pipe';
+import { ToastService } from '../services/toast.service';
+import { CallNumber } from '@ionic-native/call-number';
 
 @NgModule({
   declarations: [
@@ -20,7 +25,8 @@ import { DatabaseService } from '../services/database.service';
     ListPage,
     CardComponent,
     ProfilePage,
-    SignUpFormComponent
+    SignUpFormComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,11 @@ import { DatabaseService } from '../services/database.service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DatabaseService
+    DatabaseService,
+    Camera,
+    Toast,
+    ToastService,
+    CallNumber
   ]
 })
 export class AppModule {}

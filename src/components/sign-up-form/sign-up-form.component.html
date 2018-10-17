@@ -13,8 +13,16 @@
 
 <ng-template #profileCard>
     <div class="common-card profile-card">
-        <div class="profile-img" [style.background]="'url('+(personDetails.profilePicture?personDetails.profilePicture:'../../assets/imgs/Tony_Stark.jpg')+')'">
-        </div>
+        <ng-container *ngIf="personDetails.profilePicture then showPicture else showCamera"></ng-container>
+        <ng-template #showCamera>
+            <div class="profile-icon" (click)="openCamera()">
+                <ion-icon name="camera"></ion-icon>
+            </div>
+        </ng-template>
+        <ng-template #showPicture>
+            <div class="profile-img" [style.background]="makeTrustedImage()">
+            </div>
+        </ng-template>
         <form #profileForm="ngForm" (submit)="registerDonor(profileForm)">
             <div class="card-section">
                 <div class="input-fields">

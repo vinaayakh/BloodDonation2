@@ -4,7 +4,7 @@ export class Person {
     contactNumber: String;
     address: Address = new Address();
     lastDonated: Date;
-    profilePicture: String;
+    profilePicture: any;
     openCard: Boolean;
 
     constructor(
