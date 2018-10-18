@@ -14,10 +14,11 @@ import { Camera } from '@ionic-native/camera';
 import { ProfilePage } from '../pages/profile/profile.component';
 import { SignUpFormComponent } from '../components/sign-up-form/sign-up-form.component';
 import { DatabaseService } from '../services/database.service';
-import { SafePipe } from '../pipes/safe-pipe';
 import { ToastService } from '../services/toast.service';
 import { CallNumber } from '@ionic-native/call-number';
-
+import { DaysAgoPipe } from '../pipes/days-ago.pipe';
+import { PopupService } from '../services/popup.servicec';
+import {AlertController} from 'ionic-angular';
 @NgModule({
   declarations: [
     MyApp,
@@ -26,7 +27,7 @@ import { CallNumber } from '@ionic-native/call-number';
     CardComponent,
     ProfilePage,
     SignUpFormComponent,
-    SafePipe
+    DaysAgoPipe,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +48,9 @@ import { CallNumber } from '@ionic-native/call-number';
     Camera,
     Toast,
     ToastService,
-    CallNumber
+    CallNumber,
+    PopupService,
+    AlertController
   ]
 })
 export class AppModule {}

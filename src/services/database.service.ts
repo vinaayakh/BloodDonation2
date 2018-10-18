@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
+import { Injectable, ViewChild } from "@angular/core";
 import PouchDB from 'pouchdb';
 import { Person } from "../models/person";
-import { ToastService } from "./toast.service";
+import { PopupService } from "./popup.servicec";
 import { Subject } from "rxjs";
 
 @Injectable()
@@ -11,16 +11,15 @@ export class DatabaseService {
     donorList: Array<Person> = [];
     donorList$: Subject<Person[]> = new Subject();
 
-    constructor(private toast: ToastService) {
+    constructor(
+        private alert: PopupService,
+    ){
         this.initDatabase();
     }
 
     async initDatabase() {
         this.db = new PouchDB('Donors');
         this.remote = new PouchDB("https://couchdb-9f925b.smileupps.com/donors");
-        // this.db.replicate.from(this.remote, { "live": true }).then(() => {
-        //     this.getMany();
-        // })
         this.db.sync(this.remote, { live: true,
             retry: true,
             continuous: true })
@@ -53,10 +52,15 @@ export class DatabaseService {
     }
 
     saveData(donor: Person) {
-        this.remote.post(donor).then((success) => {
-        }).catch((err) => {
-            console.log(err);
-        });;
+        return new Promise ( (resolve, reject)=>{
+            this.remote.post(donor).then((success) => {
+                this.alert.showAlert('Registration Completed', 'You have been successfully registered', 'Your details have been added to the database and are accessible to all users of this application')
+                resolve(success);
+            }).catch((err) => {
+                console.log(err);
+                reject(err);
+            });;
+        });
     }
 
     updateData(donor: Person) {

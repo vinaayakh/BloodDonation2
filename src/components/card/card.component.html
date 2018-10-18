@@ -1,6 +1,5 @@
 <div class="card" (click)="openCard()" [ngClass]="{'popOpen':person.openCard}">
     <div class="card-image" [style.background]="'url('+person.profilePicture+')'">
-        <!-- <img src="../../assets/imgs/steve.jpg" alt=""> -->
     </div>
     <div class="card-data">
         <div class="data-left">
@@ -20,9 +19,8 @@
                     <span>{{person.contactNumber}}</span>
                 </div>
             </div>
-            <div class="card-last-donated">
-                <!-- <ion-icon name="time"></ion-icon><span>{{person.openCard}}</span> -->
-                <ion-icon name="time"></ion-icon><span>2 days ago</span>
+            <div class="card-last-donated" *ngIf="person.lastDonated">
+                <ion-icon name="time" ></ion-icon><span >{{ person.lastDonated |ago }}</span>
             </div>
         </div>
         <div class="data-right">
