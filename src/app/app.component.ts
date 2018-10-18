@@ -13,7 +13,7 @@ import { DatabaseService } from '../services/database.service';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = ProfilePage;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 

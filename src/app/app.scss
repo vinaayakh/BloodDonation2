@@ -66,3 +66,27 @@ button{
 .label-md-primary{
     color:black!important;
 }
+.input-has-focus{
+    .item-inner{
+        box-shadow:inset 0 -1px 0 0 #afafaf!important;
+        border-bottom-color: #afafaf!important;
+    }
+}
+.alert-wrapper{
+    .alert-radio-group{
+        .alert-radio-icon {
+            border-color: #940000!important;
+            .alert-radio-inner{
+                background-color: #940000
+            }    
+        }
+        .alert-radio-label{
+            color: #940000!important;
+        }
+    }
+    .alert-button-group{
+        button{
+            color: #940000!important;
+        }
+    }
+}

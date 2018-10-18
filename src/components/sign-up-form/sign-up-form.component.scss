@@ -61,6 +61,9 @@
             display: inline-block;
             width: 65%;
             vertical-align: top;
+                .select.select-md{
+                    color:black;
+                }
         }
         button{
             margin: 0 10px;
@@ -69,7 +72,7 @@
             border-radius: 5px;
             vertical-align: middle;
             display: inline-block;
-            width: 30%;
+            width: 100%;
             height: 104px;
             background-position: center!important;
             background-size: cover!important;
@@ -95,7 +98,17 @@
             margin: 16px 0;
             padding: 22px;
             border-radius: 5px;
-            box-shadow: 0px 2px 9px 0px #656565;
+            // box-shadow: 0px 2px 9px 0px #656565;
+            box-shadow: 0px 2px 9px 0px #000000;
+            .item-inner{
+                margin-top: 10px;
+                input{
+                    color: black;
+                }
+                &:first-child{
+                    margin-top:0px;
+                }
+            }
             .input-fields{
                 text-align: right;
                 margin: 14px 0;

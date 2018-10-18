@@ -2,28 +2,45 @@ import { Injectable } from "@angular/core";
 import PouchDB from 'pouchdb';
 import { Person } from "../models/person";
 import { ToastService } from "./toast.service";
+import { Subject } from "rxjs";
 
 @Injectable()
 export class DatabaseService {
     db;
     remote: any;
+    donorList: Array<Person> = [];
+    donorList$: Subject<Person[]> = new Subject();
+
     constructor(private toast: ToastService) {
         this.initDatabase();
     }
 
-    initDatabase() {
+    async initDatabase() {
         this.db = new PouchDB('Donors');
         this.remote = new PouchDB("https://couchdb-9f925b.smileupps.com/donors");
-        this.db.sync(this.remote, { "continuous": true, "live": true }).on('change', function (change) {
-            // yo, something changed!
-            console.log(change);
-            //get new docs here and change the service to emit an observable for the docs list
+        // this.db.replicate.from(this.remote, { "live": true }).then(() => {
+        //     this.getMany();
+        // })
+        this.db.sync(this.remote, { live: true,
+            retry: true,
+            continuous: true })
+        .on('change', (err) => {
+            console.log("complete")
+            this.getMany();
+        })
+        .on('complete', ()=> {
+            this.getMany();
+        }).on('error', (err) => {
+            console.log("complete")
+            this.getMany();
         });
     }
 
     async getMany() {
+        console.log("get all docs");
         let docs = await this.db.allDocs({ include_docs: true });
-        return docs.rows.map(person => person.doc) as Person[];
+        this.donorList = docs.rows.map(person => person.doc) as Array<Person>;
+        this.updateDonorList();
     }
 
     getOne() {
@@ -52,5 +69,10 @@ export class DatabaseService {
         this.remote.remove(donor).catch((err) => {
             console.log(err);
         });
+    }
+
+    updateDonorList() {
+        console.log(this.donorList);
+        this.donorList$.next(this.donorList);
     }
 }
